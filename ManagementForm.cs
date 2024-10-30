@@ -49,10 +49,10 @@ namespace DraftPRG282
 
         private void btnViewAllStudents_Click(object sender, EventArgs e)
         {
-            //StudentInfo studentInfo = new StudentInfo();
-            //List<StudentInfo> students = studentFileManager.GetStudents();
+            StudentInfo studentInfo = new StudentInfo();
+            List<StudentInfo> students = studentFileManager.GetStudents();
 
-            //dgvDisplay.DataSource = students;
+            dgvDisplay.DataSource = students;
 
             
 
