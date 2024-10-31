@@ -13,6 +13,7 @@ namespace DraftPRG282
     public partial class frmStudentManagementForm : Form
     {
         private StudentManagementFile studentFileManager;
+        
 
         public frmStudentManagementForm()
         {
@@ -47,13 +48,12 @@ namespace DraftPRG282
             txtAge.Visible = false;
         }
 
+        
+        
+
         private void btnViewAllStudents_Click(object sender, EventArgs e)
         {
-            StudentInfo studentInfo = new StudentInfo();
-            List<StudentInfo> students = studentFileManager.GetStudents();
-
-            dgvDisplay.DataSource = students;
-
+            
             
 
         }
