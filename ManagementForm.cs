@@ -14,7 +14,7 @@ namespace DraftPRG282
     public partial class frmStudentManagementForm : Form
     {
         private StudentManagementFile studentFileManager;
-        private List<StudentInfo> students;
+        private List<StudentInfo> students = new List<StudentInfo>();
 
 
         public frmStudentManagementForm()
@@ -25,9 +25,15 @@ namespace DraftPRG282
             
         }
 
+        DataTable dt = new DataTable();
         private void frmStudentManagementForm_Load(object sender, EventArgs e)
         {
-            
+            dt.Columns.Add("Student ID", typeof(string));
+            dt.Columns.Add("Name", typeof(string));
+            dt.Columns.Add("Age", typeof(string));
+            dt.Columns.Add("Course", typeof(string));
+
+            dgvDisplay.DataSource = dt;
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
@@ -54,14 +60,29 @@ namespace DraftPRG282
             txtAge.Visible = false;
         }
 
-        
-        
+
+
 
         private void btnViewAllStudents_Click(object sender, EventArgs e)
         {
-            
+            string[] lines = File.ReadAllLines(@"./students.txt");
+            string[] values;
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                values = lines[i].ToString().Split('|');
+                string[] row = new string[values.Length];
+
+                for (int j = 0; j < values.Length; j++)
+                {
+                    row[j] = values[j].Trim();
+                }
+
+                //dataGridView1.Rows.Add(row);
+                dt.Rows.Add(row);
 
 
+            }
         }
     }
 }
