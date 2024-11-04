@@ -106,8 +106,5 @@
   <ItemGroup>
     <None Include="Resources\istockphoto-2113476145-612x612.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Students.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

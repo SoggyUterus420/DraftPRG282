@@ -30,11 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStudentManagementForm));
             this.gbStudentData = new System.Windows.Forms.GroupBox();
+            this.lblClearStudentAdd = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtCourse = new System.Windows.Forms.TextBox();
+            this.txtAge = new System.Windows.Forms.TextBox();
+            this.txtStudentID = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.btnAddStudent = new System.Windows.Forms.Button();
             this.lblCourse = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
-            this.lblStudentID = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.lblStudentID = new System.Windows.Forms.Label();
             this.lblAddName = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearchBar = new System.Windows.Forms.TextBox();
@@ -47,27 +55,19 @@
             this.lblNameResult = new System.Windows.Forms.Label();
             this.dgvDisplay = new System.Windows.Forms.DataGridView();
             this.gbSummaryDisplay = new System.Windows.Forms.GroupBox();
+            this.lblTotalCoursesResult = new System.Windows.Forms.Label();
+            this.lblTotalCourses = new System.Windows.Forms.Label();
             this.btnSummaryResults = new System.Windows.Forms.Button();
             this.lblAverageAgeResult = new System.Windows.Forms.Label();
             this.lblTotalStudentsResults = new System.Windows.Forms.Label();
             this.lblAverageAge = new System.Windows.Forms.Label();
             this.lblTotalStudents = new System.Windows.Forms.Label();
             this.btnViewAllStudents = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtStudentID = new System.Windows.Forms.TextBox();
-            this.txtAge = new System.Windows.Forms.TextBox();
-            this.txtCourse = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClearResults = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.lblTotalCourses = new System.Windows.Forms.Label();
-            this.lblTotalCoursesResult = new System.Windows.Forms.Label();
             this.btnDeleteStudent = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblLine = new System.Windows.Forms.Label();
-            this.lblClearStudentAdd = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbStudentData.SuspendLayout();
             this.gbSearchedStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).BeginInit();
@@ -100,6 +100,78 @@
             this.gbStudentData.TabIndex = 0;
             this.gbStudentData.TabStop = false;
             this.gbStudentData.Text = "Add Student";
+            // 
+            // lblClearStudentAdd
+            // 
+            this.lblClearStudentAdd.AutoSize = true;
+            this.lblClearStudentAdd.Location = new System.Drawing.Point(72, 273);
+            this.lblClearStudentAdd.Name = "lblClearStudentAdd";
+            this.lblClearStudentAdd.Size = new System.Drawing.Size(44, 19);
+            this.lblClearStudentAdd.TabIndex = 22;
+            this.lblClearStudentAdd.Text = "Clear";
+            this.lblClearStudentAdd.Click += new System.EventHandler(this.lblClearStudentAdd_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(9, 59);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 1);
+            this.panel1.TabIndex = 19;
+            // 
+            // txtCourse
+            // 
+            this.txtCourse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCourse.Font = new System.Drawing.Font("Bahnschrift Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCourse.ForeColor = System.Drawing.Color.RosyBrown;
+            this.txtCourse.Location = new System.Drawing.Point(64, 188);
+            this.txtCourse.Name = "txtCourse";
+            this.txtCourse.Size = new System.Drawing.Size(114, 15);
+            this.txtCourse.TabIndex = 21;
+            // 
+            // txtAge
+            // 
+            this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAge.Font = new System.Drawing.Font("Bahnschrift Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAge.ForeColor = System.Drawing.Color.RosyBrown;
+            this.txtAge.Location = new System.Drawing.Point(46, 139);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(132, 15);
+            this.txtAge.TabIndex = 20;
+            // 
+            // txtStudentID
+            // 
+            this.txtStudentID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStudentID.Font = new System.Drawing.Font("Bahnschrift Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentID.ForeColor = System.Drawing.Color.RosyBrown;
+            this.txtStudentID.Location = new System.Drawing.Point(84, 90);
+            this.txtStudentID.Name = "txtStudentID";
+            this.txtStudentID.Size = new System.Drawing.Size(94, 15);
+            this.txtStudentID.TabIndex = 19;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Location = new System.Drawing.Point(9, 205);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(236, 1);
+            this.panel4.TabIndex = 18;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Location = new System.Drawing.Point(9, 156);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(236, 1);
+            this.panel3.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(9, 107);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(236, 1);
+            this.panel2.TabIndex = 18;
             // 
             // btnAddStudent
             // 
@@ -136,16 +208,6 @@
             this.lblAge.TabIndex = 5;
             this.lblAge.Text = "Age:";
             // 
-            // lblStudentID
-            // 
-            this.lblStudentID.AutoSize = true;
-            this.lblStudentID.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentID.Location = new System.Drawing.Point(6, 87);
-            this.lblStudentID.Name = "lblStudentID";
-            this.lblStudentID.Size = new System.Drawing.Size(72, 17);
-            this.lblStudentID.TabIndex = 3;
-            this.lblStudentID.Text = "Student ID:";
-            // 
             // txtName
             // 
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -155,6 +217,16 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(120, 15);
             this.txtName.TabIndex = 2;
+            // 
+            // lblStudentID
+            // 
+            this.lblStudentID.AutoSize = true;
+            this.lblStudentID.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentID.Location = new System.Drawing.Point(6, 87);
+            this.lblStudentID.Name = "lblStudentID";
+            this.lblStudentID.Size = new System.Drawing.Size(72, 17);
+            this.lblStudentID.TabIndex = 3;
+            this.lblStudentID.Text = "Student ID:";
             // 
             // lblAddName
             // 
@@ -215,15 +287,16 @@
             // 
             // gbSearchedStudent
             // 
+            this.gbSearchedStudent.Controls.Add(this.label1);
             this.gbSearchedStudent.Controls.Add(this.lblCourseResult);
             this.gbSearchedStudent.Controls.Add(this.lblAgeResult);
             this.gbSearchedStudent.Controls.Add(this.lblStudentIDResult);
             this.gbSearchedStudent.Controls.Add(this.lblNameResult);
-            this.gbSearchedStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbSearchedStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbSearchedStudent.ForeColor = System.Drawing.Color.RosyBrown;
-            this.gbSearchedStudent.Location = new System.Drawing.Point(314, 109);
+            this.gbSearchedStudent.Location = new System.Drawing.Point(276, 109);
             this.gbSearchedStudent.Name = "gbSearchedStudent";
-            this.gbSearchedStudent.Size = new System.Drawing.Size(534, 91);
+            this.gbSearchedStudent.Size = new System.Drawing.Size(650, 91);
             this.gbSearchedStudent.TabIndex = 13;
             this.gbSearchedStudent.TabStop = false;
             this.gbSearchedStudent.Text = "Results";
@@ -231,40 +304,40 @@
             // lblCourseResult
             // 
             this.lblCourseResult.AutoSize = true;
-            this.lblCourseResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCourseResult.Location = new System.Drawing.Point(421, 46);
+            this.lblCourseResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCourseResult.Location = new System.Drawing.Point(486, 46);
             this.lblCourseResult.Name = "lblCourseResult";
-            this.lblCourseResult.Size = new System.Drawing.Size(46, 15);
+            this.lblCourseResult.Size = new System.Drawing.Size(60, 20);
             this.lblCourseResult.TabIndex = 14;
             this.lblCourseResult.Text = "Course";
             // 
             // lblAgeResult
             // 
             this.lblAgeResult.AutoSize = true;
-            this.lblAgeResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgeResult.Location = new System.Drawing.Point(299, 46);
+            this.lblAgeResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgeResult.Location = new System.Drawing.Point(355, 46);
             this.lblAgeResult.Name = "lblAgeResult";
-            this.lblAgeResult.Size = new System.Drawing.Size(28, 15);
+            this.lblAgeResult.Size = new System.Drawing.Size(38, 20);
             this.lblAgeResult.TabIndex = 14;
             this.lblAgeResult.Text = "Age";
             // 
             // lblStudentIDResult
             // 
             this.lblStudentIDResult.AutoSize = true;
-            this.lblStudentIDResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentIDResult.Location = new System.Drawing.Point(152, 46);
+            this.lblStudentIDResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentIDResult.Location = new System.Drawing.Point(188, 46);
             this.lblStudentIDResult.Name = "lblStudentIDResult";
-            this.lblStudentIDResult.Size = new System.Drawing.Size(61, 15);
+            this.lblStudentIDResult.Size = new System.Drawing.Size(83, 20);
             this.lblStudentIDResult.TabIndex = 1;
             this.lblStudentIDResult.Text = "StudentID";
             // 
             // lblNameResult
             // 
             this.lblNameResult.AutoSize = true;
-            this.lblNameResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameResult.Location = new System.Drawing.Point(32, 46);
+            this.lblNameResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameResult.Location = new System.Drawing.Point(53, 46);
             this.lblNameResult.Name = "lblNameResult";
-            this.lblNameResult.Size = new System.Drawing.Size(41, 15);
+            this.lblNameResult.Size = new System.Drawing.Size(51, 20);
             this.lblNameResult.TabIndex = 0;
             this.lblNameResult.Text = "Name";
             // 
@@ -294,6 +367,26 @@
             this.gbSummaryDisplay.TabIndex = 15;
             this.gbSummaryDisplay.TabStop = false;
             this.gbSummaryDisplay.Text = "Summary Display";
+            // 
+            // lblTotalCoursesResult
+            // 
+            this.lblTotalCoursesResult.AutoSize = true;
+            this.lblTotalCoursesResult.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCoursesResult.Location = new System.Drawing.Point(106, 143);
+            this.lblTotalCoursesResult.Name = "lblTotalCoursesResult";
+            this.lblTotalCoursesResult.Size = new System.Drawing.Size(33, 17);
+            this.lblTotalCoursesResult.TabIndex = 6;
+            this.lblTotalCoursesResult.Text = "_____";
+            // 
+            // lblTotalCourses
+            // 
+            this.lblTotalCourses.AutoSize = true;
+            this.lblTotalCourses.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalCourses.Location = new System.Drawing.Point(6, 143);
+            this.lblTotalCourses.Name = "lblTotalCourses";
+            this.lblTotalCourses.Size = new System.Drawing.Size(91, 17);
+            this.lblTotalCourses.TabIndex = 5;
+            this.lblTotalCourses.Text = "Total Courses:";
             // 
             // btnSummaryResults
             // 
@@ -356,89 +449,13 @@
             this.btnViewAllStudents.FlatAppearance.BorderSize = 0;
             this.btnViewAllStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewAllStudents.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewAllStudents.Location = new System.Drawing.Point(506, 649);
+            this.btnViewAllStudents.Location = new System.Drawing.Point(349, 642);
             this.btnViewAllStudents.Name = "btnViewAllStudents";
             this.btnViewAllStudents.Size = new System.Drawing.Size(170, 32);
             this.btnViewAllStudents.TabIndex = 16;
             this.btnViewAllStudents.Text = "View All Students";
             this.btnViewAllStudents.UseVisualStyleBackColor = false;
             this.btnViewAllStudents.Click += new System.EventHandler(this.btnViewAllStudents_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(9, 107);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(236, 1);
-            this.panel2.TabIndex = 18;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Black;
-            this.panel3.Location = new System.Drawing.Point(9, 156);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(236, 1);
-            this.panel3.TabIndex = 18;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(9, 205);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(236, 1);
-            this.panel4.TabIndex = 18;
-            // 
-            // txtStudentID
-            // 
-            this.txtStudentID.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStudentID.Font = new System.Drawing.Font("Bahnschrift Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentID.ForeColor = System.Drawing.Color.RosyBrown;
-            this.txtStudentID.Location = new System.Drawing.Point(84, 90);
-            this.txtStudentID.Name = "txtStudentID";
-            this.txtStudentID.Size = new System.Drawing.Size(94, 15);
-            this.txtStudentID.TabIndex = 19;
-            // 
-            // txtAge
-            // 
-            this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAge.Font = new System.Drawing.Font("Bahnschrift Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAge.ForeColor = System.Drawing.Color.RosyBrown;
-            this.txtAge.Location = new System.Drawing.Point(46, 139);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(132, 15);
-            this.txtAge.TabIndex = 20;
-            // 
-            // txtCourse
-            // 
-            this.txtCourse.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCourse.Font = new System.Drawing.Font("Bahnschrift Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCourse.ForeColor = System.Drawing.Color.RosyBrown;
-            this.txtCourse.Location = new System.Drawing.Point(64, 188);
-            this.txtCourse.Name = "txtCourse";
-            this.txtCourse.Size = new System.Drawing.Size(114, 15);
-            this.txtCourse.TabIndex = 21;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(9, 59);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 1);
-            this.panel1.TabIndex = 19;
-            // 
-            // btnClearResults
-            // 
-            this.btnClearResults.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnClearResults.BackColor = System.Drawing.Color.RosyBrown;
-            this.btnClearResults.FlatAppearance.BorderSize = 0;
-            this.btnClearResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearResults.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearResults.Location = new System.Drawing.Point(487, 206);
-            this.btnClearResults.Name = "btnClearResults";
-            this.btnClearResults.Size = new System.Drawing.Size(189, 32);
-            this.btnClearResults.TabIndex = 17;
-            this.btnClearResults.Text = "Clear Results";
-            this.btnClearResults.UseVisualStyleBackColor = false;
             // 
             // btnUpdate
             // 
@@ -447,32 +464,12 @@
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(854, 168);
+            this.btnUpdate.Location = new System.Drawing.Point(491, 231);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(189, 32);
             this.btnUpdate.TabIndex = 18;
             this.btnUpdate.Text = "Update Student Details";
             this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // lblTotalCourses
-            // 
-            this.lblTotalCourses.AutoSize = true;
-            this.lblTotalCourses.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCourses.Location = new System.Drawing.Point(6, 143);
-            this.lblTotalCourses.Name = "lblTotalCourses";
-            this.lblTotalCourses.Size = new System.Drawing.Size(91, 17);
-            this.lblTotalCourses.TabIndex = 5;
-            this.lblTotalCourses.Text = "Total Courses:";
-            // 
-            // lblTotalCoursesResult
-            // 
-            this.lblTotalCoursesResult.AutoSize = true;
-            this.lblTotalCoursesResult.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCoursesResult.Location = new System.Drawing.Point(106, 143);
-            this.lblTotalCoursesResult.Name = "lblTotalCoursesResult";
-            this.lblTotalCoursesResult.Size = new System.Drawing.Size(33, 17);
-            this.lblTotalCoursesResult.TabIndex = 6;
-            this.lblTotalCoursesResult.Text = "_____";
             // 
             // btnDeleteStudent
             // 
@@ -481,7 +478,7 @@
             this.btnDeleteStudent.FlatAppearance.BorderSize = 0;
             this.btnDeleteStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteStudent.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteStudent.Location = new System.Drawing.Point(854, 123);
+            this.btnDeleteStudent.Location = new System.Drawing.Point(659, 642);
             this.btnDeleteStudent.Name = "btnDeleteStudent";
             this.btnDeleteStudent.Size = new System.Drawing.Size(189, 32);
             this.btnDeleteStudent.TabIndex = 19;
@@ -508,15 +505,16 @@
             this.lblLine.TabIndex = 21;
             this.lblLine.Text = "____________________________________";
             // 
-            // lblClearStudentAdd
+            // label1
             // 
-            this.lblClearStudentAdd.AutoSize = true;
-            this.lblClearStudentAdd.Location = new System.Drawing.Point(72, 273);
-            this.lblClearStudentAdd.Name = "lblClearStudentAdd";
-            this.lblClearStudentAdd.Size = new System.Drawing.Size(44, 19);
-            this.lblClearStudentAdd.TabIndex = 22;
-            this.lblClearStudentAdd.Text = "Clear";
-            this.lblClearStudentAdd.Click += new System.EventHandler(this.lblClearStudentAdd_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.RosyBrown;
+            this.label1.Location = new System.Drawing.Point(601, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 19);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Clear";
             // 
             // frmStudentManagementForm
             // 
@@ -526,7 +524,6 @@
             this.ClientSize = new System.Drawing.Size(1083, 719);
             this.Controls.Add(this.btnDeleteStudent);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnClearResults);
             this.Controls.Add(this.btnViewAllStudents);
             this.Controls.Add(this.gbSummaryDisplay);
             this.Controls.Add(this.dgvDisplay);
@@ -589,7 +586,6 @@
         private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.TextBox txtStudentID;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnClearResults;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblTotalCoursesResult;
         private System.Windows.Forms.Label lblTotalCourses;
@@ -597,6 +593,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblLine;
         private System.Windows.Forms.Label lblClearStudentAdd;
+        private System.Windows.Forms.Label label1;
     }
 }
 

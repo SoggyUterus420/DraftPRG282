@@ -7,23 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DraftPRG282
 {
     public partial class frmStudentManagementForm : Form
     {
         private StudentManagementFile studentFileManager;
-        
+        private List<StudentInfo> students;
+
 
         public frmStudentManagementForm()
         {
             InitializeComponent();
             studentFileManager = new StudentManagementFile();
+            students = studentFileManager.GetStudents();
+            
         }
 
         private void frmStudentManagementForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
@@ -37,6 +41,8 @@ namespace DraftPRG282
             };
 
             studentFileManager.AddStudent(student);
+            students.Add(student);
+            //studentFileManager.AddStudent(student);
             MessageBox.Show("Student added successfully!");
         }
 
@@ -54,7 +60,7 @@ namespace DraftPRG282
         private void btnViewAllStudents_Click(object sender, EventArgs e)
         {
             
-            
+
 
         }
     }
