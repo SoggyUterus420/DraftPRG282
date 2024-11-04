@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.IO.Ports;
 
 namespace DraftPRG282
 {
@@ -26,46 +27,66 @@ namespace DraftPRG282
         }
 
 
-        
-        // Loads all students from the file
-        public List<StudentInfo> GetStudents()
+        public void write(List<StudentInfo> students)
         {
-            var students = new List<StudentInfo>();
-            if (File.Exists(filePath))
+
+            FileStream fs = new FileStream(filePath, FileMode.Create);
+            using (StreamWriter sw = new StreamWriter(fs))
             {
-                var lines = File.ReadAllLines(filePath);
-                foreach (var line in lines)
+                string text;
+                foreach (StudentInfo student in students)
                 {
-                    var parts = line.Split('|');
-                    if (parts.Length == 4)
-                    {
-                        if (int.TryParse(parts[1], out int studentID) && int.TryParse(parts[2], out int studentAge))
-                        {
-                            students.Add(new StudentInfo
-                            {
-                                Name = parts[0],
-                                StudentID = studentID,
-                                StudentAge = studentAge,
-                                Course = parts[3]
-                            });
-                        }
-                        else
-                        {
-                            // Handle invalid data format, e.g., log or skip the entry
-                            Console.WriteLine($"Warning: Skipping line with invalid data: {line}");
-                        }
-                    }
+                    text = student.Name;
+                    sw.WriteLine(text);
                 }
             }
+
+            fs.Close();
+            Console.WriteLine("Data saved successfully");
+            Console.ReadLine();
+        }
+
+        public List<StudentInfo> read()
+        {
+            List<StudentInfo> students = new List<StudentInfo>();
+                
+            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate);
+            StreamReader sr = new StreamReader(fs);
+            string text;
+            while ((text = sr.ReadLine()) != null)
+            {
+                string[] strings = text.Split('|');
+                StudentInfo newstudent = new StudentInfo();
+                if (strings.Length == 4)
+                {
+                    if (int.TryParse(strings[1], out int studentID) && int.TryParse(strings[2], out int studentAge))
+                    {
+                        students.Add(new StudentInfo
+                        {
+                            Name = strings[0],
+                            StudentID = studentID,
+                            StudentAge = studentAge,
+                            Course = strings[3]
+                        });
+                    }
+                    else
+                    {
+                        // Handle invalid data format, e.g., log or skip the entry
+                        Console.WriteLine($"Warning: Skipping line with invalid data: {text}");
+                    }
+                }
+
+                    students.Add(newstudent);
+            }
+            fs.Close();
+            sr.Close();
+
             return students;
         }
 
-        // Saves all students to the file (overwrites)
-        public void SaveAllStudents(List<StudentInfo> students)
-        {
-            var lines = students.Select(s => $"{s.Name}\t{s.StudentID}\t{s.StudentAge}\t{s.Course}");
-            File.WriteAllLines(filePath, lines);
-        }
+
+
+        
     }
 }
         

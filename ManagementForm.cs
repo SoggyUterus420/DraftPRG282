@@ -21,7 +21,7 @@ namespace DraftPRG282
         {
             InitializeComponent();
             studentFileManager = new StudentManagementFile();
-            students = studentFileManager.GetStudents();
+            students = studentFileManager.read(); 
             
         }
 
