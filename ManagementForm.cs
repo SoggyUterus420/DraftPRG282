@@ -147,5 +147,22 @@ namespace DraftPRG282
         {
             Environment.Exit(0);
         }
+
+        private void btnDeleteStudent_Click(object sender, EventArgs e)
+        {
+
+            if (int.TryParse(txtStudentID.Text, out int studentID))
+            {
+                StudentManagementFile managementFile = new StudentManagementFile();
+
+                managementFile.DeleteStudent(studentID);
+
+                MessageBox.Show("Student deleted successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid Student ID.");
+            }
+        }
     }
 }

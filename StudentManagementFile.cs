@@ -26,8 +26,22 @@ namespace DraftPRG282
             }
         }
 
+        public void DeleteStudent(int studentID)
+        {
+            List<StudentInfo> students = read();
 
-        public void write(List<StudentInfo> students)
+            students = students.Where(s => s.StudentID != studentID).ToList();
+
+            using (StreamWriter writer = new StreamWriter(filePath, false))
+            {
+                foreach (var student in students)
+                {
+                    writer.WriteLine($"Name: {student.Name} | Student ID: {student.StudentID} | Age: {student.StudentAge} | Course: {student.Course}");
+                }
+            }
+        }
+
+        public void Write(List<StudentInfo> students)
         {
 
             FileStream fs = new FileStream(filePath, FileMode.Create);
