@@ -36,7 +36,7 @@ namespace DraftPRG282
             {
                 foreach (var student in students)
                 {
-                    writer.WriteLine($"Name: {student.Name} | Student ID: {student.StudentID} | Age: {student.StudentAge} | Course: {student.Course}");
+                    writer.WriteLine($"{student.StudentID} | {student.Name} | {student.StudentAge} | {student.Course}");
                 }
             }
         }

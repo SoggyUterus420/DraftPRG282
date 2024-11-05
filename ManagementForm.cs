@@ -148,6 +148,7 @@ namespace DraftPRG282
             Environment.Exit(0);
         }
 
+
         private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
 
@@ -163,6 +164,8 @@ namespace DraftPRG282
             {
                 MessageBox.Show("Please enter a valid Student ID.");
             }
+
+            
         }
     }
 }
