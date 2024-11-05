@@ -13,7 +13,7 @@ namespace DraftPRG282
 {
     public partial class frmStudentManagementForm : Form
     {
-        private StudentManagementFile studentFileManager;
+        private StudentManagementFile studentFileManager = new StudentManagementFile();
         private List<StudentInfo> students = new List<StudentInfo>();
 
 
@@ -28,6 +28,8 @@ namespace DraftPRG282
         DataTable dt = new DataTable();
         private void frmStudentManagementForm_Load(object sender, EventArgs e)
         {
+            students = studentFileManager.read();
+
             dt.Columns.Add("Student ID", typeof(string));
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Age", typeof(string));
@@ -36,6 +38,7 @@ namespace DraftPRG282
             dgvDisplay.DataSource = dt;
         }
 
+        
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
             var student = new StudentInfo
@@ -48,19 +51,27 @@ namespace DraftPRG282
 
             studentFileManager.AddStudent(student);
             students.Add(student);
-            //studentFileManager.AddStudent(student);
             MessageBox.Show("Student added successfully!");
+
+            
         }
 
         private void lblClearStudentAdd_Click(object sender, EventArgs e)
         {
-            txtName.Visible = false;
-            txtStudentID.Visible = false;
-            txtCourse.Visible = false;
-            txtAge.Visible = false;
+            txtName.Clear();
+            txtStudentID.Clear();
+            txtAge.Clear();
+            txtCourse.Clear();
         }
 
-
+        private void RefreshStudentDataGrid()
+        {
+            dt.Clear();
+            foreach (var student in students)
+            {
+                dt.Rows.Add(student.StudentID, student.Name, student.StudentAge, student.Course);
+            }
+        }
 
 
         private void btnViewAllStudents_Click(object sender, EventArgs e)
@@ -78,11 +89,63 @@ namespace DraftPRG282
                     row[j] = values[j].Trim();
                 }
 
-                //dataGridView1.Rows.Add(row);
+                
                 dt.Rows.Add(row);
 
 
             }
+            RefreshStudentDataGrid();
+            
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchInput = txtSearchBar.Text;
+            bool found = false;
+
+            
+
+            foreach (StudentInfo student in students) 
+            { 
+                if (student.StudentID.ToString().Equals(searchInput, StringComparison.OrdinalIgnoreCase))
+                {
+                    found = true;
+
+                    lblNameResult.Text = student.Name;
+                    lblStudentIDResult.Text = student.StudentID.ToString();
+                    lblAgeResult.Text = student.StudentAge.ToString();
+                    lblCourseResult.Text = student.Course;
+
+                    lblNameResult.Visible = true;
+                    lblStudentIDResult.Visible = true;
+                    lblAgeResult.Visible = true;
+                    lblCourseResult.Visible = true;
+
+                    break;
+                }
+            }
+                if (found == false)
+                {
+                    MessageBox.Show("No student with that ID exisits.");
+                }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtSearchBar.Clear();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            lblNameResult.Visible = false;
+            lblStudentIDResult.Visible = false;
+            lblAgeResult.Visible = false;
+            lblCourseResult.Visible = false;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

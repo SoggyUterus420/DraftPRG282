@@ -49,6 +49,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.gbSearchedStudent = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblCourseResult = new System.Windows.Forms.Label();
             this.lblAgeResult = new System.Windows.Forms.Label();
             this.lblStudentIDResult = new System.Windows.Forms.Label();
@@ -67,7 +68,7 @@
             this.btnDeleteStudent = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblLine = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.gbStudentData.SuspendLayout();
             this.gbSearchedStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).BeginInit();
@@ -271,6 +272,7 @@
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnClear
             // 
@@ -284,6 +286,7 @@
             this.btnClear.TabIndex = 12;
             this.btnClear.Text = "Clear Search";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // gbSearchedStudent
             // 
@@ -300,6 +303,18 @@
             this.gbSearchedStudent.TabIndex = 13;
             this.gbSearchedStudent.TabStop = false;
             this.gbSearchedStudent.Text = "Results";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.RosyBrown;
+            this.label1.Location = new System.Drawing.Point(601, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 19);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Clear";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblCourseResult
             // 
@@ -505,16 +520,20 @@
             this.lblLine.TabIndex = 21;
             this.lblLine.Text = "____________________________________";
             // 
-            // label1
+            // btnExit
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.RosyBrown;
-            this.label1.Location = new System.Drawing.Point(601, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 19);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Clear";
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExit.BackColor = System.Drawing.Color.RosyBrown;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(999, 675);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(72, 32);
+            this.btnExit.TabIndex = 22;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // frmStudentManagementForm
             // 
@@ -522,6 +541,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1083, 719);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDeleteStudent);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnViewAllStudents);
@@ -594,6 +614,7 @@
         private System.Windows.Forms.Label lblLine;
         private System.Windows.Forms.Label lblClearStudentAdd;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 

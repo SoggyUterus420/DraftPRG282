@@ -34,7 +34,7 @@ namespace DraftPRG282
         //How it will look in the text file
         public override string ToString() 
         { 
-            return $"Name: {studentName} | Student ID: {studentID} | Age: {studentAge} | Course: {course}";
+            return $" {studentID} | {studentName} | {studentAge} | {course}";
         }
     }
 }

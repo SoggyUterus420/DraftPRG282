@@ -20,9 +20,9 @@ namespace DraftPRG282
         //Will allow students to be added, deleted, and updated without overriding the entire file
         public void AddStudent(StudentInfo student)
         {
-            using (StreamWriter writer = new StreamWriter("Students.txt", append: true))
+            using (StreamWriter writer = new StreamWriter("students.txt", append: true))
             {
-                writer.WriteLine($"Name: {student.Name} | Student ID: {student.StudentID} | Age: {student.StudentAge} | Course: {student.Course}");
+                writer.WriteLine($"{student.StudentID} | {student.Name} | {student.StudentAge} | {student.Course}");
             }
         }
 
@@ -49,44 +49,33 @@ namespace DraftPRG282
         public List<StudentInfo> read()
         {
             List<StudentInfo> students = new List<StudentInfo>();
-                
-            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate);
-            StreamReader sr = new StreamReader(fs);
-            string text;
-            while ((text = sr.ReadLine()) != null)
+
+            if (!File.Exists(filePath)) return students;
+
+            string[] lines = File.ReadAllLines(filePath);
+
+            foreach (string line in lines)
             {
-                string[] strings = text.Split('|');
-                StudentInfo newstudent = new StudentInfo();
-                if (strings.Length == 4)
+                string[] parts = line.Split('|');
+                if (parts.Length == 4 && int.TryParse(parts[0], out int studentID) && int.TryParse(parts[2], out int studentAge))
                 {
-                    if (int.TryParse(strings[1], out int studentID) && int.TryParse(strings[2], out int studentAge))
+                    students.Add(new StudentInfo
                     {
-                        students.Add(new StudentInfo
-                        {
-                            Name = strings[0],
-                            StudentID = studentID,
-                            StudentAge = studentAge,
-                            Course = strings[3]
-                        });
-                    }
-                    else
-                    {
-                        // Handle invalid data format, e.g., log or skip the entry
-                        Console.WriteLine($"Warning: Skipping line with invalid data: {text}");
-                    }
+                        StudentID = studentID,
+                        Name = parts[1],
+                        StudentAge = studentAge,
+                        Course = parts[3]
+                    });
                 }
-
-                    students.Add(newstudent);
+                else
+                {
+                    // Log or handle invalid data here if needed
+                    Console.WriteLine($"Invalid data: {line}");
+                }
             }
-            fs.Close();
-            sr.Close();
-
             return students;
         }
 
-
-
-        
     }
 }
         
