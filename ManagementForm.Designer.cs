@@ -49,6 +49,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.gbSearchedStudent = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblCourseResult = new System.Windows.Forms.Label();
             this.lblAgeResult = new System.Windows.Forms.Label();
             this.lblStudentIDResult = new System.Windows.Forms.Label();
@@ -67,7 +68,6 @@
             this.btnDeleteStudent = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblLine = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbStudentData.SuspendLayout();
             this.gbSearchedStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).BeginInit();
@@ -301,6 +301,17 @@
             this.gbSearchedStudent.TabStop = false;
             this.gbSearchedStudent.Text = "Results";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.RosyBrown;
+            this.label1.Location = new System.Drawing.Point(601, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 19);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Clear";
+            // 
             // lblCourseResult
             // 
             this.lblCourseResult.AutoSize = true;
@@ -484,6 +495,7 @@
             this.btnDeleteStudent.TabIndex = 19;
             this.btnDeleteStudent.Text = "Delete Student ";
             this.btnDeleteStudent.UseVisualStyleBackColor = false;
+            this.btnDeleteStudent.Click += new System.EventHandler(this.btnDeleteStudent_Click);
             // 
             // pictureBox1
             // 
@@ -504,17 +516,6 @@
             this.lblLine.Size = new System.Drawing.Size(223, 13);
             this.lblLine.TabIndex = 21;
             this.lblLine.Text = "____________________________________";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.RosyBrown;
-            this.label1.Location = new System.Drawing.Point(601, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 19);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Clear";
             // 
             // frmStudentManagementForm
             // 
