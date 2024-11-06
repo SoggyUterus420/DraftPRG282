@@ -111,15 +111,11 @@ namespace DraftPRG282
                 {
                     found = true;
 
-                    lblNameResult.Text = student.Name;
-                    lblStudentIDResult.Text = student.StudentID.ToString();
-                    lblAgeResult.Text = student.StudentAge.ToString();
-                    lblCourseResult.Text = student.Course;
+                    txtNameDisplay.Text = student.Name;
+                    txtStudentIDResult.Text = student.StudentID.ToString();
+                    txtAgeResult.Text = student.StudentAge.ToString();
+                    txtCourseResult.Text = student.Course;
 
-                    lblNameResult.Visible = true;
-                    lblStudentIDResult.Visible = true;
-                    lblAgeResult.Visible = true;
-                    lblCourseResult.Visible = true;
 
                     break;
                 }
@@ -137,17 +133,16 @@ namespace DraftPRG282
 
         private void label1_Click(object sender, EventArgs e)
         {
-            lblNameResult.Visible = false;
-            lblStudentIDResult.Visible = false;
-            lblAgeResult.Visible = false;
-            lblCourseResult.Visible = false;
+            txtCourseResult.Clear();
+            txtAgeResult.Clear();
+            txtStudentIDResult.Clear();
+            txtNameDisplay.Clear();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
-
 
         private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
@@ -164,8 +159,22 @@ namespace DraftPRG282
             {
                 MessageBox.Show("Please enter a valid Student ID.");
             }
+        }
 
-            
+        private void dgvDisplay_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the click is on a valid row
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvDisplay.Rows[e.RowIndex];
+
+                // Populate TextBoxes with the row data
+                txtNameDisplay.Text = row.Cells["Name"].Value?.ToString();
+                txtStudentIDResult.Text = row.Cells["Student ID"].Value?.ToString();
+                txtAgeResult.Text = row.Cells["Age"].Value?.ToString();
+                txtCourseResult.Text = row.Cells["Course"].Value?.ToString();
+
+            }
         }
     }
 }

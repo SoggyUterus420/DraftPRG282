@@ -30,24 +30,15 @@ namespace DraftPRG282
         {
             List<StudentInfo> students = read();
 
-            var updatedStudents = students.Where(s => s.StudentID != studentID).ToList();
-
-            if (updatedStudents.Count == students.Count)
-            {
-                Console.WriteLine("No student found with the specified ID.");
-                return;
-            }
-
+            students = students.Where(s => s.StudentID != studentID).ToList();
 
             using (StreamWriter writer = new StreamWriter(filePath, false))
             {
-                foreach (var student in updatedStudents)
+                foreach (var student in students)
                 {
-                    writer.WriteLine($"Name: {student.Name} | Student ID: {student.StudentID} | Age: {student.StudentAge} | Course: {student.Course}");
+                    writer.WriteLine($"{student.StudentID} | {student.Name} | {student.StudentAge} | {student.Course}");
                 }
             }
-
-            Console.WriteLine($"Student with ID {studentID} deleted successfully.");
         }
 
         public void Write(List<StudentInfo> students)
@@ -73,50 +64,27 @@ namespace DraftPRG282
         {
             List<StudentInfo> students = new List<StudentInfo>();
 
-            // Ensure the file exists before attempting to read
-            if (!File.Exists(filePath))
-            {
-                Console.WriteLine("File does not exist.");
-                return students;
-            }
+            if (!File.Exists(filePath)) return students;
 
-            // Open the file to read data
-            using (StreamReader sr = new StreamReader(filePath))
+            string[] lines = File.ReadAllLines(filePath);
+
+            foreach (string line in lines)
             {
-                string line;
-                while ((line = sr.ReadLine()) != null)
+                string[] parts = line.Split('|');
+                if (parts.Length == 4 && int.TryParse(parts[0], out int studentID) && int.TryParse(parts[2], out int studentAge))
                 {
-                    // Split by " | " to get each component
-                    string[] parts = line.Split('|');
-
-                    if (parts.Length == 4)
+                    students.Add(new StudentInfo
                     {
-                        try
-                        {
-                            // Extract each field value after ": "
-                            string name = parts[0].Split(':')[1].Trim();
-                            int studentID = int.Parse(parts[1].Split(':')[1].Trim());
-                            int age = int.Parse(parts[2].Split(':')[1].Trim());
-                            string course = parts[3].Split(':')[1].Trim();
-
-                            // Create new student and add to the list
-                            students.Add(new StudentInfo
-                            {
-                                Name = name,
-                                StudentID = studentID,
-                                StudentAge = age,
-                                Course = course
-                            });
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Error parsing line: {line}. Exception: {ex.Message}");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Skipping improperly formatted line: {line}");
-                    }
+                        StudentID = studentID,
+                        Name = parts[1],
+                        StudentAge = studentAge,
+                        Course = parts[3]
+                    });
+                }
+                else
+                {
+                    // Log or handle invalid data here if needed
+                    Console.WriteLine($"Invalid data: {line}");
                 }
             }
             return students;
