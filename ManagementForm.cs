@@ -146,6 +146,8 @@ namespace DraftPRG282
 
         private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
+            int rowIndex = dgvDisplay.CurrentCell.RowIndex;
+            dgvDisplay.Rows.RemoveAt(rowIndex);
 
             if (int.TryParse(txtStudentID.Text, out int studentID))
             {
