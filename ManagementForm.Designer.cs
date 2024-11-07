@@ -60,11 +60,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDisplay = new System.Windows.Forms.DataGridView();
             this.gbSummaryDisplay = new System.Windows.Forms.GroupBox();
-            this.lblTotalCoursesResult = new System.Windows.Forms.Label();
-            this.lblTotalCourses = new System.Windows.Forms.Label();
+            this.lblOldestStudent = new System.Windows.Forms.Label();
             this.btnSummaryResults = new System.Windows.Forms.Button();
-            this.lblAverageAgeResult = new System.Windows.Forms.Label();
-            this.lblTotalStudentsResults = new System.Windows.Forms.Label();
             this.lblAverageAge = new System.Windows.Forms.Label();
             this.lblTotalStudents = new System.Windows.Forms.Label();
             this.btnViewAllStudents = new System.Windows.Forms.Button();
@@ -73,6 +70,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblLine = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.txtTotalStudentResult = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.txtAverageAgeResult = new System.Windows.Forms.TextBox();
+            this.txtOldestStudent = new System.Windows.Forms.TextBox();
             this.gbStudentData.SuspendLayout();
             this.gbSearchedStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisplay)).BeginInit();
@@ -416,11 +419,14 @@
             // 
             // gbSummaryDisplay
             // 
-            this.gbSummaryDisplay.Controls.Add(this.lblTotalCoursesResult);
-            this.gbSummaryDisplay.Controls.Add(this.lblTotalCourses);
+            this.gbSummaryDisplay.Controls.Add(this.txtOldestStudent);
+            this.gbSummaryDisplay.Controls.Add(this.txtAverageAgeResult);
+            this.gbSummaryDisplay.Controls.Add(this.panel6);
+            this.gbSummaryDisplay.Controls.Add(this.panel7);
+            this.gbSummaryDisplay.Controls.Add(this.panel5);
+            this.gbSummaryDisplay.Controls.Add(this.txtTotalStudentResult);
+            this.gbSummaryDisplay.Controls.Add(this.lblOldestStudent);
             this.gbSummaryDisplay.Controls.Add(this.btnSummaryResults);
-            this.gbSummaryDisplay.Controls.Add(this.lblAverageAgeResult);
-            this.gbSummaryDisplay.Controls.Add(this.lblTotalStudentsResults);
             this.gbSummaryDisplay.Controls.Add(this.lblAverageAge);
             this.gbSummaryDisplay.Controls.Add(this.lblTotalStudents);
             this.gbSummaryDisplay.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -432,25 +438,15 @@
             this.gbSummaryDisplay.TabStop = false;
             this.gbSummaryDisplay.Text = "Summary Display";
             // 
-            // lblTotalCoursesResult
+            // lblOldestStudent
             // 
-            this.lblTotalCoursesResult.AutoSize = true;
-            this.lblTotalCoursesResult.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCoursesResult.Location = new System.Drawing.Point(106, 143);
-            this.lblTotalCoursesResult.Name = "lblTotalCoursesResult";
-            this.lblTotalCoursesResult.Size = new System.Drawing.Size(33, 17);
-            this.lblTotalCoursesResult.TabIndex = 6;
-            this.lblTotalCoursesResult.Text = "_____";
-            // 
-            // lblTotalCourses
-            // 
-            this.lblTotalCourses.AutoSize = true;
-            this.lblTotalCourses.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCourses.Location = new System.Drawing.Point(6, 143);
-            this.lblTotalCourses.Name = "lblTotalCourses";
-            this.lblTotalCourses.Size = new System.Drawing.Size(91, 17);
-            this.lblTotalCourses.TabIndex = 5;
-            this.lblTotalCourses.Text = "Total Courses:";
+            this.lblOldestStudent.AutoSize = true;
+            this.lblOldestStudent.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOldestStudent.Location = new System.Drawing.Point(6, 143);
+            this.lblOldestStudent.Name = "lblOldestStudent";
+            this.lblOldestStudent.Size = new System.Drawing.Size(82, 17);
+            this.lblOldestStudent.TabIndex = 5;
+            this.lblOldestStudent.Text = "Highest Age:";
             // 
             // btnSummaryResults
             // 
@@ -459,32 +455,13 @@
             this.btnSummaryResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSummaryResults.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSummaryResults.ForeColor = System.Drawing.Color.Black;
-            this.btnSummaryResults.Location = new System.Drawing.Point(20, 185);
+            this.btnSummaryResults.Location = new System.Drawing.Point(20, 201);
             this.btnSummaryResults.Name = "btnSummaryResults";
             this.btnSummaryResults.Size = new System.Drawing.Size(148, 31);
             this.btnSummaryResults.TabIndex = 4;
             this.btnSummaryResults.Text = "Generate Summary ";
             this.btnSummaryResults.UseVisualStyleBackColor = false;
-            // 
-            // lblAverageAgeResult
-            // 
-            this.lblAverageAgeResult.AutoSize = true;
-            this.lblAverageAgeResult.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAverageAgeResult.Location = new System.Drawing.Point(106, 97);
-            this.lblAverageAgeResult.Name = "lblAverageAgeResult";
-            this.lblAverageAgeResult.Size = new System.Drawing.Size(33, 17);
-            this.lblAverageAgeResult.TabIndex = 3;
-            this.lblAverageAgeResult.Text = "_____";
-            // 
-            // lblTotalStudentsResults
-            // 
-            this.lblTotalStudentsResults.AutoSize = true;
-            this.lblTotalStudentsResults.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalStudentsResults.Location = new System.Drawing.Point(106, 46);
-            this.lblTotalStudentsResults.Name = "lblTotalStudentsResults";
-            this.lblTotalStudentsResults.Size = new System.Drawing.Size(33, 17);
-            this.lblTotalStudentsResults.TabIndex = 2;
-            this.lblTotalStudentsResults.Text = "_____";
+            this.btnSummaryResults.Click += new System.EventHandler(this.btnSummaryResults_Click);
             // 
             // lblAverageAge
             // 
@@ -585,6 +562,57 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // txtTotalStudentResult
+            // 
+            this.txtTotalStudentResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotalStudentResult.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalStudentResult.Location = new System.Drawing.Point(106, 44);
+            this.txtTotalStudentResult.Name = "txtTotalStudentResult";
+            this.txtTotalStudentResult.Size = new System.Drawing.Size(62, 18);
+            this.txtTotalStudentResult.TabIndex = 24;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Black;
+            this.panel5.Location = new System.Drawing.Point(9, 64);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(236, 1);
+            this.panel5.TabIndex = 19;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Black;
+            this.panel6.Location = new System.Drawing.Point(9, 159);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(236, 1);
+            this.panel6.TabIndex = 20;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Black;
+            this.panel7.Location = new System.Drawing.Point(9, 113);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(236, 1);
+            this.panel7.TabIndex = 20;
+            // 
+            // txtAverageAgeResult
+            // 
+            this.txtAverageAgeResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAverageAgeResult.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAverageAgeResult.Location = new System.Drawing.Point(106, 93);
+            this.txtAverageAgeResult.Name = "txtAverageAgeResult";
+            this.txtAverageAgeResult.Size = new System.Drawing.Size(62, 18);
+            this.txtAverageAgeResult.TabIndex = 25;
+            // 
+            // txtOldestStudent
+            // 
+            this.txtOldestStudent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtOldestStudent.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOldestStudent.Location = new System.Drawing.Point(106, 139);
+            this.txtOldestStudent.Name = "txtOldestStudent";
+            this.txtOldestStudent.Size = new System.Drawing.Size(62, 18);
+            this.txtOldestStudent.TabIndex = 26;
+            // 
             // frmStudentManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -641,8 +669,6 @@
         private System.Windows.Forms.GroupBox gbSummaryDisplay;
         private System.Windows.Forms.Label lblTotalStudents;
         private System.Windows.Forms.Button btnSummaryResults;
-        private System.Windows.Forms.Label lblAverageAgeResult;
-        private System.Windows.Forms.Label lblTotalStudentsResults;
         private System.Windows.Forms.Label lblAverageAge;
         private System.Windows.Forms.Button btnViewAllStudents;
         private System.Windows.Forms.Panel panel4;
@@ -653,8 +679,7 @@
         private System.Windows.Forms.TextBox txtStudentID;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Label lblTotalCoursesResult;
-        private System.Windows.Forms.Label lblTotalCourses;
+        private System.Windows.Forms.Label lblOldestStudent;
         private System.Windows.Forms.Button btnDeleteStudent;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblLine;
@@ -669,6 +694,12 @@
         private System.Windows.Forms.Label lblCourseDisplay;
         private System.Windows.Forms.Label lblAgeDisplay;
         private System.Windows.Forms.Label lblNameDisplay;
+        private System.Windows.Forms.TextBox txtTotalStudentResult;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox txtOldestStudent;
+        private System.Windows.Forms.TextBox txtAverageAgeResult;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
     }
 }
 

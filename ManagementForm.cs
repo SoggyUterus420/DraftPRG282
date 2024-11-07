@@ -30,9 +30,9 @@ namespace DraftPRG282
         {
             students = studentFileManager.read();
 
-            dt.Columns.Add("Student ID", typeof(string));
             dt.Columns.Add("Name", typeof(string));
-            dt.Columns.Add("Age", typeof(string));
+            dt.Columns.Add("Student ID", typeof(int));
+            dt.Columns.Add("Age", typeof(int));
             dt.Columns.Add("Course", typeof(string));
 
             dgvDisplay.DataSource = dt;
@@ -43,8 +43,8 @@ namespace DraftPRG282
         {
             var student = new StudentInfo
             {
-                Name = txtName.Text,
                 StudentID = int.Parse(txtStudentID.Text),
+                Name = txtName.Text,
                 StudentAge = int.Parse(txtAge.Text),
                 Course = txtCourse.Text,
             };
@@ -64,38 +64,21 @@ namespace DraftPRG282
             txtCourse.Clear();
         }
 
-        private void RefreshStudentDataGrid()
-        {
-            dt.Clear();
-            foreach (var student in students)
-            {
-                dt.Rows.Add(student.StudentID, student.Name, student.StudentAge, student.Course);
-            }
-        }
-
-
+        
         private void btnViewAllStudents_Click(object sender, EventArgs e)
         {
+            dt.Clear(); // Clear any previous rows
             string[] lines = File.ReadAllLines(@"./students.txt");
-            string[] values;
 
-            for (int i = 0; i < lines.Length; i++)
+            foreach (string line in lines)
             {
-                values = lines[i].ToString().Split('|');
-                string[] row = new string[values.Length];
-
-                for (int j = 0; j < values.Length; j++)
+                string[] values = line.Split('|');
+                if (values.Length == 4)
                 {
-                    row[j] = values[j].Trim();
+                    dt.Rows.Add(values[1].Trim(), values[0].Trim(), int.Parse(values[2].Trim()), values[3].Trim());
                 }
-
-                
-                dt.Rows.Add(row);
-
-
             }
-            RefreshStudentDataGrid();
-            
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -147,13 +130,13 @@ namespace DraftPRG282
         private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
             int rowIndex = dgvDisplay.CurrentCell.RowIndex;
-            dgvDisplay.Rows.RemoveAt(rowIndex);
 
             if (int.TryParse(txtStudentID.Text, out int studentID))
             {
                 StudentManagementFile managementFile = new StudentManagementFile();
 
                 managementFile.DeleteStudent(studentID);
+                dgvDisplay.Rows.RemoveAt(rowIndex);
 
                 MessageBox.Show("Student deleted successfully.");
             }
@@ -161,6 +144,11 @@ namespace DraftPRG282
             {
                 MessageBox.Show("Please enter a valid Student ID.");
             }
+
+
+
+
+
         }
 
         private void dgvDisplay_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -178,18 +166,27 @@ namespace DraftPRG282
 
             }
         }
-        private void btnGenerate_Click(object sender, EventArgs e)
+
+        private void btnSummaryResults_Click(object sender, EventArgs e)
         {
-            var lines = File.ReadAllLines("students.txt");
-            int studentCount = lines.Length;
-            int ageSum = lines.Sum(line => int.Parse(line.Split(',')[2]));
-            double averageAge = (double)ageSum / studentCount;
+            //Calculates the amount of rows in the dgv
+            int studentCount = dgvDisplay.Rows.Count;
+            if (dgvDisplay.AllowUserToAddRows)
+            {
+                // Subtract 1 if there's an empty row at the end
+                studentCount--;
+            }
+            txtTotalStudentResult.Text = studentCount.ToString();
 
-            //lblStudentCount.Text = $"Total Students: {studentCount}";
-            lblAverageAge.Text = $"Average Age: {averageAge:F2}";
+            //Calculates the average age
+            txtAverageAgeResult.Text = (from DataGridViewRow row in dgvDisplay.Rows
+                                  where row.Cells[2].FormattedValue.ToString() != string.Empty
+                                  select Convert.ToInt32(row.Cells[2].FormattedValue)).Average().ToString();
 
-            File.WriteAllText("students.txt", $"Total Students: {studentCount}\nAverage Age: {averageAge:F2}");
-            MessageBox.Show("Summary report generated!");
+            //Checks which student it the oldest
+            txtOldestStudent.Text = (from DataGridViewRow row in dgvDisplay.Rows
+                                        where row.Cells[2].FormattedValue.ToString() != string.Empty
+                                        select (row.Cells[2].FormattedValue)).Max().ToString();
         }
     }
 }
