@@ -176,5 +176,18 @@ namespace DraftPRG282
 
             }
         }
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            var lines = File.ReadAllLines("students.txt");
+            int studentCount = lines.Length;
+            int ageSum = lines.Sum(line => int.Parse(line.Split(',')[2]));
+            double averageAge = (double)ageSum / studentCount;
+
+            //lblStudentCount.Text = $"Total Students: {studentCount}";
+            lblAverageAge.Text = $"Average Age: {averageAge:F2}";
+
+            File.WriteAllText("students.txt", $"Total Students: {studentCount}\nAverage Age: {averageAge:F2}");
+            MessageBox.Show("Summary report generated!");
+        }
     }
 }
