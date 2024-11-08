@@ -129,25 +129,34 @@ namespace DraftPRG282
 
         private void btnDeleteStudent_Click(object sender, EventArgs e)
         {
-            int rowIndex = dgvDisplay.CurrentCell.RowIndex;
-
-            if (int.TryParse(txtStudentID.Text, out int studentID))
+            //Checks if row is selected. No row selected will then be null.
+            if (dgvDisplay.CurrentRow != null)
             {
-                StudentManagementFile managementFile = new StudentManagementFile();
+                //Obtain position of selected row.
+                int rowIndex = dgvDisplay.CurrentCell.RowIndex;
 
-                managementFile.DeleteStudent(studentID);
-                dgvDisplay.Rows.RemoveAt(rowIndex);
+                // Get the student ID from the selected row in the DataGridView
+                if (int.TryParse(dgvDisplay.Rows[rowIndex].Cells["Student ID"].Value.ToString(), out int studentID))
+                {
+                    StudentManagementFile managementFile = new StudentManagementFile();
 
-                MessageBox.Show("Student deleted successfully.");
+                    // Delete the student from the file
+                    managementFile.DeleteStudent(studentID);
+
+                    // Remove the student from the DataGridView
+                    dgvDisplay.Rows.RemoveAt(rowIndex);
+
+                    MessageBox.Show("Student deleted successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Unable to retrieve a valid Student ID from the selected row.");
+                }
             }
             else
             {
-                MessageBox.Show("Please enter a valid Student ID.");
+                MessageBox.Show("Please select a student to delete.");
             }
-
-
-
-
 
         }
 
@@ -179,14 +188,33 @@ namespace DraftPRG282
             txtTotalStudentResult.Text = studentCount.ToString();
 
             //Calculates the average age
-            txtAverageAgeResult.Text = (from DataGridViewRow row in dgvDisplay.Rows
+            txtAverageAgeResult.Text = Math.Round((from DataGridViewRow row in dgvDisplay.Rows
                                   where row.Cells[2].FormattedValue.ToString() != string.Empty
-                                  select Convert.ToInt32(row.Cells[2].FormattedValue)).Average().ToString();
+                                  select Convert.ToInt32(row.Cells[2].FormattedValue)).Average(), 3).ToString();
 
             //Checks which student it the oldest
             txtOldestStudent.Text = (from DataGridViewRow row in dgvDisplay.Rows
                                         where row.Cells[2].FormattedValue.ToString() != string.Empty
                                         select (row.Cells[2].FormattedValue)).Max().ToString();
+
+            string filePath = "summary.txt";
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    writer.WriteLine("Summary Results");
+                    writer.WriteLine("----------------");
+                    writer.WriteLine($"Total Students: {studentCount}");
+                    writer.WriteLine($"Average Age: {txtAverageAgeResult.Text}");
+                    writer.WriteLine($"Oldest Student Age: {txtOldestStudent.Text}");
+                }
+
+                MessageBox.Show("Summary saved to summary.txt", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving summary: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
