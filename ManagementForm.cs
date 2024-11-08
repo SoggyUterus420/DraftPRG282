@@ -138,15 +138,28 @@ namespace DraftPRG282
                 // Get the student ID from the selected row in the DataGridView
                 if (int.TryParse(dgvDisplay.Rows[rowIndex].Cells["Student ID"].Value.ToString(), out int studentID))
                 {
-                    StudentManagementFile managementFile = new StudentManagementFile();
+                    if(MessageBox.Show("Are you sure you want to delete this student?", "Delete Student", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
 
-                    // Delete the student from the file
-                    managementFile.DeleteStudent(studentID);
+                        StudentManagementFile managementFile = new StudentManagementFile();
 
-                    // Remove the student from the DataGridView
-                    dgvDisplay.Rows.RemoveAt(rowIndex);
+                        // Delete the student from the file
+                        managementFile.DeleteStudent(studentID);
 
-                    MessageBox.Show("Student deleted successfully.");
+                        // Remove the student from the DataGridView
+                        dgvDisplay.Rows.RemoveAt(rowIndex);
+
+                        MessageBox.Show("Student deleted successfully.");
+
+                        txtNameDisplay.Clear();
+                        txtStudentIDResult.Clear();
+                        txtAgeResult.Clear();
+                        txtCourseResult.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student not deleted.", "Delete Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
