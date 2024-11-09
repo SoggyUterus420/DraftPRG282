@@ -1,0 +1,5 @@
+123456 | Jorge Clooney | 23 | Art
+123789 | Tom Cruise | 21 | History
+789456 | Joe Biden | 22 | English
+456321 | Michael Myers | 20 | Chemistry
+258963 | Freddy Kruger | 24 | Physics
