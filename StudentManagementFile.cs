@@ -100,8 +100,8 @@ namespace DraftPRG282
             {
                 if (students[i].StudentID == updatedStudent.StudentID)
                 {
-                    // Replace the student with the updated data
-                    students[i] = updatedStudent; 
+
+                    students[i].Course = updatedStudent.Course;
                     break;
                 }
             }

@@ -259,25 +259,33 @@ namespace DraftPRG282
         {
             if (int.TryParse(txtStudentIDResult.Text, out int studentID))
             {
-                var updatedStudent = new StudentInfo
+                if (int.TryParse(txtAgeResult.Text, out int studentAge) && !string.IsNullOrWhiteSpace(txtCourseResult.Text))
                 {
-                    StudentID = studentID,
-                    Name = txtNameDisplay.Text,
-                    StudentAge = int.Parse(txtAgeResult.Text),
-                    Course = txtCourseResult.Text
-                };
 
-                // Updates the student in the file
-                studentFileManager.UpdateStudent(updatedStudent);
+                    var updatedStudent = new StudentInfo
+                    {
+                        StudentID = studentID,
+                        Name = txtNameDisplay.Text,
+                        StudentAge = studentAge,
+                        Course = txtCourseResult.Text
+                    };
 
-                // Refresh DataGridView with updated data using the existing view all method
-                if (btnViewAllStudents.Visible)
-                {
-                    // Trigger the view all method to reload the data
-                    btnViewAllStudents_Click(sender, e); 
+                    // Updates the student in the file
+                    studentFileManager.UpdateStudent(updatedStudent);
+
+                    // Refresh DataGridView with updated data using the existing view all method
+                    if (btnViewAllStudents.Visible)
+                    {
+                        // Trigger the view all method to reload the data
+                        btnViewAllStudents_Click(sender, e);
+                    }
+
+                    MessageBox.Show("Student information updated successfully.");
                 }
-
-                MessageBox.Show("Student information updated successfully.");
+                else
+                {
+                    MessageBox.Show("Please enter valid values for Age and Course.");
+                }
             }
             else
             {
@@ -286,3 +294,4 @@ namespace DraftPRG282
         }
     }
 }
+
