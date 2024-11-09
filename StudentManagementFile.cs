@@ -90,18 +90,19 @@ namespace DraftPRG282
             return students;
         }
 
+
         public void UpdateStudent(StudentInfo updatedStudent)
         {
             // Load all students from the file
-            List<StudentInfo> students = read(); 
+            List<StudentInfo> students = read();
 
             // Find the student with the matching ID and update details
             for (int i = 0; i < students.Count; i++)
             {
                 if (students[i].StudentID == updatedStudent.StudentID)
                 {
-
                     students[i].Course = updatedStudent.Course;
+                    students[i].StudentAge = updatedStudent.StudentAge;
                     break;
                 }
             }
@@ -119,7 +120,3 @@ namespace DraftPRG282
 
     }
 }
-
-
-
-

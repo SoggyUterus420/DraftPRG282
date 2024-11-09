@@ -21,8 +21,8 @@ namespace DraftPRG282
         {
             InitializeComponent();
             studentFileManager = new StudentManagementFile();
-            students = studentFileManager.read(); 
-            
+            students = studentFileManager.read();
+
         }
 
         DataTable dt = new DataTable();
@@ -38,7 +38,7 @@ namespace DraftPRG282
             dgvDisplay.DataSource = dt;
         }
 
-        
+
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
             var student = new StudentInfo
@@ -53,7 +53,7 @@ namespace DraftPRG282
             students.Add(student);
             MessageBox.Show("Student added successfully!");
 
-            
+
         }
 
         private void lblClearStudentAdd_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace DraftPRG282
             txtCourse.Clear();
         }
 
-        
+
         private void btnViewAllStudents_Click(object sender, EventArgs e)
         {
             dt.Clear(); // Clear any previous rows
@@ -83,54 +83,30 @@ namespace DraftPRG282
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //string searchInput = txtSearchBar.Text;
-            //bool found = false;
 
+            string searchInput = txtSearchBar.Text;
+            bool found = false;
 
-
-            //foreach (StudentInfo student in students) 
-            //{ 
-            //    if (student.StudentID.ToString().Equals(searchInput, StringComparison.OrdinalIgnoreCase))
-            //    {
-            //        found = true;
-
-            //        txtNameDisplay.Text = student.Name;
-            //        txtStudentIDResult.Text = student.StudentID.ToString();
-            //        txtAgeResult.Text = student.StudentAge.ToString();
-            //        txtCourseResult.Text = student.Course;
-
-
-            //        break;
-            //    }
-            //}
-            //    if (found == false)
-            //    {
-            //        MessageBox.Show("No student with that ID exisits.");
-            //    }
-
-                string searchInput = txtSearchBar.Text;
-                bool found = false;
-
-                foreach (StudentInfo student in students)
+            foreach (StudentInfo student in students)
+            {
+                if (student.StudentID.ToString().Equals(searchInput, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (student.StudentID.ToString().Equals(searchInput, StringComparison.OrdinalIgnoreCase))
-                    {
-                        found = true;
+                    found = true;
 
-                        // Populate fields with student data
-                        txtNameDisplay.Text = student.Name;
-                        txtStudentIDResult.Text = student.StudentID.ToString();
-                        txtAgeResult.Text = student.StudentAge.ToString();
-                        txtCourseResult.Text = student.Course;
+                    // Populate fields with student data
+                    txtNameDisplay.Text = student.Name;
+                    txtStudentIDResult.Text = student.StudentID.ToString();
+                    txtAgeResult.Text = student.StudentAge.ToString();
+                    txtCourseResult.Text = student.Course;
 
-                        break;
-                    }
+                    break;
                 }
-                if (!found)
-                {
-                    MessageBox.Show("No student with that ID exists.");
-                }
-            
+            }
+            if (!found)
+            {
+                MessageBox.Show("No student with that ID exists.");
+            }
+
 
         }
 
@@ -163,7 +139,7 @@ namespace DraftPRG282
                 // Get the student ID from the selected row in the DataGridView
                 if (int.TryParse(dgvDisplay.Rows[rowIndex].Cells["Student ID"].Value.ToString(), out int studentID))
                 {
-                    if(MessageBox.Show("Are you sure you want to delete this student?", "Delete Student", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to delete this student?", "Delete Student", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
 
                         StudentManagementFile managementFile = new StudentManagementFile();
@@ -227,13 +203,13 @@ namespace DraftPRG282
 
             //Calculates the average age
             txtAverageAgeResult.Text = Math.Round((from DataGridViewRow row in dgvDisplay.Rows
-                                  where row.Cells[2].FormattedValue.ToString() != string.Empty
-                                  select Convert.ToInt32(row.Cells[2].FormattedValue)).Average(), 3).ToString();
+                                                   where row.Cells[2].FormattedValue.ToString() != string.Empty
+                                                   select Convert.ToInt32(row.Cells[2].FormattedValue)).Average(), 3).ToString();
 
             //Checks which student it the oldest
             txtOldestStudent.Text = (from DataGridViewRow row in dgvDisplay.Rows
-                                        where row.Cells[2].FormattedValue.ToString() != string.Empty
-                                        select (row.Cells[2].FormattedValue)).Max().ToString();
+                                     where row.Cells[2].FormattedValue.ToString() != string.Empty
+                                     select (row.Cells[2].FormattedValue)).Max().ToString();
 
             string filePath = "summary.txt";
             try
@@ -264,10 +240,11 @@ namespace DraftPRG282
 
                     var updatedStudent = new StudentInfo
                     {
-                        StudentID = studentID,
+                        StudentID = int.Parse(txtStudentIDResult.Text),
                         Name = txtNameDisplay.Text,
                         StudentAge = studentAge,
                         Course = txtCourseResult.Text
+
                     };
 
                     // Updates the student in the file
