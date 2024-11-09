@@ -83,30 +83,55 @@ namespace DraftPRG282
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchInput = txtSearchBar.Text;
-            bool found = false;
+            //string searchInput = txtSearchBar.Text;
+            //bool found = false;
 
+
+
+            //foreach (StudentInfo student in students) 
+            //{ 
+            //    if (student.StudentID.ToString().Equals(searchInput, StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        found = true;
+
+            //        txtNameDisplay.Text = student.Name;
+            //        txtStudentIDResult.Text = student.StudentID.ToString();
+            //        txtAgeResult.Text = student.StudentAge.ToString();
+            //        txtCourseResult.Text = student.Course;
+
+
+            //        break;
+            //    }
+            //}
+            //    if (found == false)
+            //    {
+            //        MessageBox.Show("No student with that ID exisits.");
+            //    }
+
+                string searchInput = txtSearchBar.Text;
+                bool found = false;
+
+                foreach (StudentInfo student in students)
+                {
+                    if (student.StudentID.ToString().Equals(searchInput, StringComparison.OrdinalIgnoreCase))
+                    {
+                        found = true;
+
+                        // Populate fields with student data
+                        txtNameDisplay.Text = student.Name;
+                        txtStudentIDResult.Text = student.StudentID.ToString();
+                        txtAgeResult.Text = student.StudentAge.ToString();
+                        txtCourseResult.Text = student.Course;
+
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    MessageBox.Show("No student with that ID exists.");
+                }
             
 
-            foreach (StudentInfo student in students) 
-            { 
-                if (student.StudentID.ToString().Equals(searchInput, StringComparison.OrdinalIgnoreCase))
-                {
-                    found = true;
-
-                    txtNameDisplay.Text = student.Name;
-                    txtStudentIDResult.Text = student.StudentID.ToString();
-                    txtAgeResult.Text = student.StudentAge.ToString();
-                    txtCourseResult.Text = student.Course;
-
-
-                    break;
-                }
-            }
-                if (found == false)
-                {
-                    MessageBox.Show("No student with that ID exisits.");
-                }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -227,6 +252,36 @@ namespace DraftPRG282
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving summary: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtStudentIDResult.Text, out int studentID))
+            {
+                var updatedStudent = new StudentInfo
+                {
+                    StudentID = studentID,
+                    Name = txtNameDisplay.Text,
+                    StudentAge = int.Parse(txtAgeResult.Text),
+                    Course = txtCourseResult.Text
+                };
+
+                // Updates the student in the file
+                studentFileManager.UpdateStudent(updatedStudent);
+
+                // Refresh DataGridView with updated data using the existing view all method
+                if (btnViewAllStudents.Visible)
+                {
+                    // Trigger the view all method to reload the data
+                    btnViewAllStudents_Click(sender, e); 
+                }
+
+                MessageBox.Show("Student information updated successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Please select a valid student to update.");
             }
         }
     }

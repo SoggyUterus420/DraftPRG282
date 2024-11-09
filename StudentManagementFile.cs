@@ -90,11 +90,36 @@ namespace DraftPRG282
             return students;
         }
 
+        public void UpdateStudent(StudentInfo updatedStudent)
+        {
+            // Load all students from the file
+            List<StudentInfo> students = read(); 
+
+            // Find the student with the matching ID and update details
+            for (int i = 0; i < students.Count; i++)
+            {
+                if (students[i].StudentID == updatedStudent.StudentID)
+                {
+                    // Replace the student with the updated data
+                    students[i] = updatedStudent; 
+                    break;
+                }
+            }
+
+            // Write the updated list back to the file
+            using (StreamWriter writer = new StreamWriter(filePath, false))
+            {
+                foreach (var student in students)
+                {
+                    writer.WriteLine($"{student.StudentID} | {student.Name} | {student.StudentAge} | {student.Course}");
+                }
+            }
+        }
+
 
     }
 }
-        
 
 
 
-    
+
